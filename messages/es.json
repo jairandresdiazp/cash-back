@@ -1,0 +1,6 @@
+{
+    "admin/editor.cash-back.title": "Cash Back",
+    "admin/editor.cash-back.description": "Calcula el cashback del producto",
+    "admin/editor.cash-back.specification.label.title": "especificacion de SKU que contiene el cash back",
+    "store/editor.cash-back.label": "Cash Back"
+}
