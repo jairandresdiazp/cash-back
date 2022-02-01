@@ -26,7 +26,7 @@ const Cashback: StorefrontFunctionComponent<CashbackProps> = ({
             const cashBackSpecification = item?.skuSpecifications?.find(
                 (skuSpecification: any) => skuSpecification?.fieldName === specification,
             )?.fieldValues[0] || 0;
-            const cashBackValue = item?.price * (cashBackSpecification / 100);
+            const cashBackValue = item?.price * item.quantity * (cashBackSpecification / 100);
             return cashBackValue;
         })
         .reduce(
