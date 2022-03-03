@@ -6,6 +6,7 @@ $(document).ready(function () {
 
 const calculateCashBack = async (orderForm) => {
     const currencySymbol = orderForm.storePreferencesData.currencySymbol;
+    const clientCurrency = orderForm.clientPreferencesData.locale;
     const items = orderForm.items;
     let cashBackTotal = [];
     let cashBackValue = 0;
@@ -18,7 +19,6 @@ const calculateCashBack = async (orderForm) => {
             type: 'GET',
         })
             .done(function (skuData) {
-                console.log('skuData', skuData);
                 const skuSpecifications = skuData.SkuSpecifications;
                 let cashBackSpecification = 0;
 
@@ -34,7 +34,7 @@ const calculateCashBack = async (orderForm) => {
                         try {
                             cashBackSpecification =
                                 skuSpecification.FieldValues[0];
-                        } catch (error) {}
+                        } catch (error) { }
                     }
                 }
 
@@ -59,9 +59,9 @@ const calculateCashBack = async (orderForm) => {
 
     try {
         const HTMLCashBack = `\n <tr class="cashBack-row">\n <td class="info">Cash Back</td>\n <td class="space"></td>\n<td class="monetary">${currencySymbol} ${new Intl.NumberFormat(
-            'es-CO'
+            clientCurrency
         ).format(cashBackValue)}</td>\n <td class="empty"></td>\n</tr>`;
 
         $('.totalizers-list .Items').before(HTMLCashBack);
-    } catch (error) {}
+    } catch (error) { }
 };
